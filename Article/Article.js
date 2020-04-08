@@ -89,14 +89,14 @@ const data = [
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
-  <p class="article">
+  <article class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
 
     {three separate paragraph elements}
 
     <span class='expandButton'></span>
-  </p>
+  </article>
   Hint: You will need to use createElement more than once here!
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' p.
@@ -131,7 +131,7 @@ const articlesContainer = document.querySelector(".articles");
 
 const makeArticle = ({ title, date, firstParagraph, secondParagraph, thirdParagraph }) => {
   //instantiate elements
-  const article = document.createElement('p');
+  const article = document.createElement('article');
   const articleTitle = document.createElement('h2');
   const articleDate = document.createElement('p');
   const articleP1 = document.createElement('p');

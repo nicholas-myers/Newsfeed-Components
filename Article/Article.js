@@ -89,26 +89,73 @@ const data = [
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
-  
-  <div class="article">
+  <p class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
 
     {three separate paragraph elements}
 
     <span class='expandButton'></span>
-  </div>
-
+  </p>
   Hint: You will need to use createElement more than once here!
-
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
-
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
-
+  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' p.
   Step 3: return the entire component.
-
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
-
+  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' p.
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+
+const articlesContainer = document.querySelector(".articles");
+
+const makeArticle = ({ title, date, firstParagraph, secondParagraph, thirdParagraph }) => {
+  //instantiate elements
+  const article = document.createElement('p');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const articleP1 = document.createElement('p');
+  const articleP2 = document.createElement('p');
+  const articleP3 = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+ 
+
+  //structure elements
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(articleP1);
+  article.appendChild(articleP2);
+  article.appendChild(articleP3);
+  article.appendChild(expandButton);
+
+  // set classes
+  article.classList.add("article");
+  articleDate.classList.add("date");
+  expandButton.classList.add("expandButton");
+
+  // set the content
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articleP1.textContent = firstParagraph;
+  articleP2.textContent = secondParagraph;
+  articleP3.textContent = thirdParagraph;
+  expandButton.textContent = "Read this article...";
+  expandButton.style.border = "1px solid black";
+  expandButton.style.borderRadius = "5px";
+  expandButton.style.padding = "5px";
+
+
+  // add event listeners
+  expandButton.addEventListener("click", (event) => {
+    article.classList.toggle("article-open");
+  }); 
+  return article;
+};
+
+const articles = data.map(articleData => makeArticle(articleData));
+
+articles.forEach(article => {
+  articlesContainer.appendChild(article);
+})

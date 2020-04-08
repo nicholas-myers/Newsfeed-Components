@@ -105,7 +105,26 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+//////// push new items to the data Array
+data.push({
+  title: 'Beatboxing for noobs!',
+  date: 'April 8, 2020',
+  firstParagraph: `Donec congue diam ac neque ultrices venenatis. Donec ac leo justo. In vitae pretium libero. Nulla porttitor fermentum auctor. Morbi eget hendrerit elit, nec fermentum massa. Cras pellentesque augue quis odio sodales tempor in semper ipsum. Fusce viverra nisl nec dapibus imperdiet.`,
 
+  secondParagraph: `Fusce scelerisque velit condimentum justo hendrerit maximus. Phasellus rhoncus est eget turpis sagittis hendrerit. Aenean nec suscipit felis, sed pretium leo. Donec quam ligula, imperdiet vel orci eget, imperdiet tincidunt purus. Morbi diam ante, viverra quis risus non, dignissim tempor tellus. Vivamus faucibus rutrum felis non sodales. Maecenas lobortis sapien non consectetur faucibus.`,
+
+  thirdParagraph: `Quisque sit amet velit elit. Etiam ultricies tristique auctor. Ut volutpat fermentum odio, et consequat odio volutpat non. Proin iaculis justo in lectus mattis maximus. Duis posuere metus sit amet imperdiet finibus. In finibus odio in fermentum consectetur. Praesent mattis a enim eu porta. Donec facilisis nibh nec metus feugiat imperdiet. Sed ultrices, orci ut pellentesque auctor, dolor felis pellentesque ipsum, nec consequat diam leo eu orci. Pellentesque suscipit mattis nunc sed ullamcorper. Etiam porttitor a nulla vel mattis.`
+});
+
+data.push({
+  title: 'Are you a poet? and do you know it?',
+  date: 'April 8, 2020',
+  firstParagraph: `Donec congue diam ac neque ultrices venenatis. Donec ac leo justo. In vitae pretium libero. Nulla porttitor fermentum auctor. Morbi eget hendrerit elit, nec fermentum massa. Cras pellentesque augue quis odio sodales tempor in semper ipsum. Fusce viverra nisl nec dapibus imperdiet.`,
+
+  secondParagraph: `Fusce scelerisque velit condimentum justo hendrerit maximus. Phasellus rhoncus est eget turpis sagittis hendrerit. Aenean nec suscipit felis, sed pretium leo. Donec quam ligula, imperdiet vel orci eget, imperdiet tincidunt purus. Morbi diam ante, viverra quis risus non, dignissim tempor tellus. Vivamus faucibus rutrum felis non sodales. Maecenas lobortis sapien non consectetur faucibus.`,
+
+  thirdParagraph: `Quisque sit amet velit elit. Etiam ultricies tristique auctor. Ut volutpat fermentum odio, et consequat odio volutpat non. Proin iaculis justo in lectus mattis maximus. Duis posuere metus sit amet imperdiet finibus. In finibus odio in fermentum consectetur. Praesent mattis a enim eu porta. Donec facilisis nibh nec metus feugiat imperdiet. Sed ultrices, orci ut pellentesque auctor, dolor felis pellentesque ipsum, nec consequat diam leo eu orci. Pellentesque suscipit mattis nunc sed ullamcorper. Etiam porttitor a nulla vel mattis.`
+});
 
 
 const articlesContainer = document.querySelector(".articles");
@@ -159,3 +178,7 @@ const articles = data.map(articleData => makeArticle(articleData));
 articles.forEach(article => {
   articlesContainer.appendChild(article);
 })
+
+
+//////// push new items to the data Array
+

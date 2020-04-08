@@ -33,6 +33,9 @@ const createMenu = (menuItems) => {
   // structure elements
   menu.appendChild(menuList);
 
+  //set classes
+  menu.classList.add("menu");
+
   // array function to make li
   menuItems.forEach((item) => {
     const listItem = document.createElement("li");

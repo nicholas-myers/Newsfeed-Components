@@ -89,26 +89,96 @@ const data = [
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
-  
-  <div class="article">
+  <article class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
 
     {three separate paragraph elements}
 
     <span class='expandButton'></span>
-  </div>
-
+  </article>
   Hint: You will need to use createElement more than once here!
-
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
-
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
-
+  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' p.
   Step 3: return the entire component.
-
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
-
+  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' p.
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+//////// push new items to the data Array
+data.push({
+  title: 'Beatboxing for noobs!',
+  date: 'April 8, 2020',
+  firstParagraph: `Donec congue diam ac neque ultrices venenatis. Donec ac leo justo. In vitae pretium libero. Nulla porttitor fermentum auctor. Morbi eget hendrerit elit, nec fermentum massa. Cras pellentesque augue quis odio sodales tempor in semper ipsum. Fusce viverra nisl nec dapibus imperdiet.`,
+
+  secondParagraph: `Fusce scelerisque velit condimentum justo hendrerit maximus. Phasellus rhoncus est eget turpis sagittis hendrerit. Aenean nec suscipit felis, sed pretium leo. Donec quam ligula, imperdiet vel orci eget, imperdiet tincidunt purus. Morbi diam ante, viverra quis risus non, dignissim tempor tellus. Vivamus faucibus rutrum felis non sodales. Maecenas lobortis sapien non consectetur faucibus.`,
+
+  thirdParagraph: `Quisque sit amet velit elit. Etiam ultricies tristique auctor. Ut volutpat fermentum odio, et consequat odio volutpat non. Proin iaculis justo in lectus mattis maximus. Duis posuere metus sit amet imperdiet finibus. In finibus odio in fermentum consectetur. Praesent mattis a enim eu porta. Donec facilisis nibh nec metus feugiat imperdiet. Sed ultrices, orci ut pellentesque auctor, dolor felis pellentesque ipsum, nec consequat diam leo eu orci. Pellentesque suscipit mattis nunc sed ullamcorper. Etiam porttitor a nulla vel mattis.`
+});
+
+data.push({
+  title: 'Are you a poet? and do you know it?',
+  date: 'April 8, 2020',
+  firstParagraph: `Donec congue diam ac neque ultrices venenatis. Donec ac leo justo. In vitae pretium libero. Nulla porttitor fermentum auctor. Morbi eget hendrerit elit, nec fermentum massa. Cras pellentesque augue quis odio sodales tempor in semper ipsum. Fusce viverra nisl nec dapibus imperdiet.`,
+
+  secondParagraph: `Fusce scelerisque velit condimentum justo hendrerit maximus. Phasellus rhoncus est eget turpis sagittis hendrerit. Aenean nec suscipit felis, sed pretium leo. Donec quam ligula, imperdiet vel orci eget, imperdiet tincidunt purus. Morbi diam ante, viverra quis risus non, dignissim tempor tellus. Vivamus faucibus rutrum felis non sodales. Maecenas lobortis sapien non consectetur faucibus.`,
+
+  thirdParagraph: `Quisque sit amet velit elit. Etiam ultricies tristique auctor. Ut volutpat fermentum odio, et consequat odio volutpat non. Proin iaculis justo in lectus mattis maximus. Duis posuere metus sit amet imperdiet finibus. In finibus odio in fermentum consectetur. Praesent mattis a enim eu porta. Donec facilisis nibh nec metus feugiat imperdiet. Sed ultrices, orci ut pellentesque auctor, dolor felis pellentesque ipsum, nec consequat diam leo eu orci. Pellentesque suscipit mattis nunc sed ullamcorper. Etiam porttitor a nulla vel mattis.`
+});
+
+
+const articlesContainer = document.querySelector(".articles");
+
+const makeArticle = ({ title, date, firstParagraph, secondParagraph, thirdParagraph }) => {
+  //instantiate elements
+  const article = document.createElement('article');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const articleP1 = document.createElement('p');
+  const articleP2 = document.createElement('p');
+  const articleP3 = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+ 
+
+  //structure elements
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(articleP1);
+  article.appendChild(articleP2);
+  article.appendChild(articleP3);
+  article.appendChild(expandButton);
+
+  // set classes
+  article.classList.add("article");
+  articleDate.classList.add("date");
+  expandButton.classList.add("expandButton");
+
+  // set the content
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articleP1.textContent = firstParagraph;
+  articleP2.textContent = secondParagraph;
+  articleP3.textContent = thirdParagraph;
+  expandButton.textContent = "Read this article...";
+  expandButton.style.border = "1px solid black";
+  expandButton.style.borderRadius = "5px";
+  expandButton.style.padding = "5px";
+
+
+  // add event listeners
+  expandButton.addEventListener("click", (event) => {
+    article.classList.toggle("article-open");
+  }); 
+  return article;
+};
+
+const articles = data.map(articleData => makeArticle(articleData));
+
+articles.forEach(article => {
+  articlesContainer.appendChild(article);
+})
+
+
+//////// push new items to the data Array
+

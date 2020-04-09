@@ -42,12 +42,16 @@ const createMenu = (menuItems) => {
     listItem.textContent = item;
     menuList.appendChild(listItem);
   });
- 
+
   //get menuButton and add event listener
   const menuButton = document.querySelector(".menu-button");
   menuButton.addEventListener("click", (event) => {
     menu.classList.toggle("menu--open");
+    // $(menu).slideDown("slow");
+    // $(menu).animate({height: 'toggle'});
+    $(menu).animate({width: 'toggle'});
   });
+  
   return menu;
 };
 
